@@ -17,7 +17,7 @@ const Header = () => {
     ];
 
     return (
-        <header className='bg-[#7b8a8b] flex justify-between items-center h-24 mx-auto px-4 text-white'>
+        <header className='bg-[#7b8a8b] fixed w-full flex justify-between items-center h-16 mx-auto px-4 text-white'>
             <Link to='/' className='flex items-center cursor-pointer'>
                 <img src={logo} alt="indiTrendz" />
                 <h1 className='text-white w-full text-3xl font-bold'>Indi trendz</h1>
@@ -25,10 +25,9 @@ const Header = () => {
 
              {/* Desktop Navigation */}
             <ul className='hidden md:flex'>
-                {navItems.map(item => (
-                    <Link to={item.route}>
+                {navItems.map((item) => (
+                    <Link to={item.route} key={item.id}>
                         <li
-                            key={item.id}
                             className='p-4 hover:bg-[#b5c0c1] flex gap-1 rounded-xl m-2 cursor-pointer duration-300 hover:text-black'
                         >
                             {item.icon}
@@ -54,9 +53,8 @@ const Header = () => {
                 <h1 className='w-full text-3xl font-bold text-white m-4'>Cart</h1>
 
                 {navItems.map(item => (
-                    <Link to={item.route}>
+                    <Link to={item.route} key={item.id}>
                         <li
-                            key={item.id}
                             className='p-4 flex gap-1 border-b rounded-xl hover:bg-[#b5c0c1] duration-300 hover:text-black cursor-pointer border-gray-600'
                         >
                             {item.icon}

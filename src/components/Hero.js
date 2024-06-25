@@ -1,14 +1,16 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import ProductList from './ProductList';
 
 const Hero = () => {
+
     return (
-       <div>
+        <div>
             <Header />
-                Hero
-            <Footer/>
-       </div>
+            <ProductList />
+            <Footer />
+        </div>
     )
 }
 
