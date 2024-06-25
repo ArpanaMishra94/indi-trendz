@@ -9,11 +9,11 @@ import { Shimmer } from "./Shimmer";
 const Hero = () => {
     useProducts();
     const loading = useSelector(store => store.products.loading);
-
+ 
     return (
         <div>
             <Header />
-            {!loading ?  <ProductList /> : <Shimmer/>}
+            {loading? <Shimmer/> : <ProductList/>}
             <Footer />
         </div>
     )

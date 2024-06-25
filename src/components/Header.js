@@ -3,9 +3,11 @@ import logo from "../assets/logo.png";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const [nav, setNav] = useState(false);
+    const cartItems = useSelector(store => store.cart);
 
     const handleNav = () => {
         setNav(!nav);
@@ -23,21 +25,35 @@ const Header = () => {
                 <h1 className='text-white w-full text-3xl font-bold'>Indi trendz</h1>
             </Link>
 
-             {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
             <ul className='hidden md:flex'>
                 {navItems.map((item) => (
                     <Link to={item.route} key={item.id}>
                         <li
-                            className='p-4 hover:bg-[#b5c0c1] flex gap-1 rounded-xl m-2 cursor-pointer duration-300 hover:text-black'
+                            className='p-4 hover:bg-[#b5c0c1] flex justify-center items-center gap-1 rounded-xl m-2 cursor-pointer duration-300'
                         >
-                            {item.icon}
-                            {item.text}
+                            {
+                                item.text === 'Cart' ? (
+                                    <>
+                                        {item.icon}
+                                        {item.text}
+                                        <div className='w-5 h-5 rounded-full flex justify-center items-center bg-white'>
+                                            <p className='text-[#7b8a8b] font-bold'>{(cartItems.reduce((acc, curr) => acc + curr.quantity, 0))}</p>
+                                        </div>
+                                    </>
+                                ) : (
+                                <>
+                                    {item.icon}
+                                    {item.text}
+                                </>
+                                )
+                            }
                         </li>
                     </Link>
                 ))}
             </ul>
 
-             {/* Mobile Navigation */}
+            {/* Mobile Navigation */}
 
             <div onClick={handleNav} className='block md:hidden'>
                 {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
@@ -48,14 +64,14 @@ const Header = () => {
                     nav
                         ? 'fixed md:hidden left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#7b8a8b] ease-in-out duration-500'
                         : 'ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]'
-                    }
-                >
+                }
+            >
                 <h1 className='w-full text-3xl font-bold text-white m-4'>Cart</h1>
 
                 {navItems.map(item => (
                     <Link to={item.route} key={item.id}>
                         <li
-                            className='p-4 flex gap-1 border-b rounded-xl hover:bg-[#b5c0c1] duration-300 hover:text-black cursor-pointer border-gray-600'
+                            className='p-4 flex gap-1 border-b rounded-xl hover:bg-[#b5c0c1] duration-300 cursor-pointer border-gray-600'
                         >
                             {item.icon}
                             {item.text}

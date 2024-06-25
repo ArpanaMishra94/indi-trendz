@@ -3,10 +3,10 @@ import { Puff } from "react-loader-spinner"
 
 export const Shimmer = () => {
 	return (
-		<><div className="hidden md:block -mt-[1px] ml-[536px]">
+		<><div className="flex justify-center items-center">
 			<Puff
 				height="750"
-				width="110"
+				width="200"
 				radius={1}
 				color="#7b8a8b"
 				ariaLabel="puff-loading"
