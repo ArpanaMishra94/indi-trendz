@@ -1,12 +1,9 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import useProducts from '../hooks/useProducts';
 import { useSelector } from 'react-redux';
 
-
 const ProductList = () => {
-    useProducts();
-    const products = useSelector(store => store.products);
+    const products = useSelector(store => store.products.product);
 
     return (
         <div className='flex flex-wrap justify-center pt-16'>

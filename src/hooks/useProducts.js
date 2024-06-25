@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import {addProduct} from '../utils/productsSlice'
+import {addProduct, setLoading} from '../utils/productsSlice'
 import { useEffect } from 'react';
 
 const useProducts = () => {
@@ -9,6 +9,7 @@ const useProducts = () => {
         const data = await fetch("https://fakestoreapi.com/products");
         const json = await data.json();
         dispatch(addProduct(json));
+        dispatch(setLoading(false));
     }
 
     useEffect(() => {
