@@ -37,9 +37,9 @@ const Header = () => {
                                     <>
                                         {item.icon}
                                         {item.text}
-                                        <div className='w-5 h-5 rounded-full flex justify-center items-center bg-white'>
-                                            <p className='text-[#7b8a8b] font-bold'>{(cartItems.reduce((acc, curr) => acc + curr.quantity, 0))}</p>
-                                        </div>
+                                        {cartItems.length > 0 && <div className='w-6 h-6 rounded-full flex justify-center items-center bg-white'>
+                                            <p className='text-[#7b8a8b] font-semibold'>{(cartItems.reduce((acc, curr) => acc + curr.quantity, 0))}</p>
+                                        </div>}
                                     </>
                                 ) : (
                                 <>
