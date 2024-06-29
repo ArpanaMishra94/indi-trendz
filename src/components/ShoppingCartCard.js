@@ -21,8 +21,8 @@ const ShoppingCartCard = ({ product }) => {
       <img src={image} alt={title} className="w-20 h-20 object-cover mr-4" />
 
       <div className="flex-grow">
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-gray-600">${price.toFixed(2)}</p>
+        <h3 className="text-lg text-[#636f70] font-semibold">{title}</h3>
+        <p className="text-[#636f70]">${price.toFixed(2)}</p>
       </div>
 
       <div className="flex items-center">

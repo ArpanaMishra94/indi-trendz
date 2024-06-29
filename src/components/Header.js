@@ -15,7 +15,7 @@ const Header = () => {
 
     const navItems = [
         { id: 1, text: 'Cart', icon: <FaShoppingCart size={25} color='white' />, route: '/cart' },
-        { id: 2, text: 'Profile', icon: <FaUser size={25} color='white' />, route: '/' },
+        { id: 2, text: 'Profile', icon: <FaUser size={25} color='white' />, route: '/profile' },
     ];
 
     return (

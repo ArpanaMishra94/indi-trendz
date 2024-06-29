@@ -18,7 +18,7 @@ const ShoppingCartList = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 pt-16">
-            <h1 className="text-3xl pt-8 font-bold mb-6">Shopping Cart</h1>
+            <h1 className="text-3xl pt-8 text-[#636f70] font-bold mb-6">Shopping Cart</h1>
             <div className="bg-white rounded-lg shadow-md p-6">
                 {cartItems.map((item) => (
                     <ShoppingCartCard
