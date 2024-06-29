@@ -19,7 +19,7 @@ const Header = () => {
     ];
 
     return (
-        <header className='bg-[#7b8a8b] fixed w-full flex justify-between items-center h-16 mx-auto px-4 text-white'>
+        <header className='bg-[#7b8a8b] fixed w-full flex justify-between items-center h-16 mx-auto px-4 z-10 text-white'>
             <Link to='/' className='flex items-center cursor-pointer'>
                 <img src={logo} alt="indiTrendz" />
                 <h1 className='text-white w-full text-3xl font-bold'>Indi trendz</h1>
@@ -73,8 +73,22 @@ const Header = () => {
                         <li
                             className='p-4 flex gap-1 border-b rounded-xl hover:bg-[#b5c0c1] duration-300 cursor-pointer border-gray-600'
                         >
-                            {item.icon}
-                            {item.text}
+                             {
+                                item.text === 'Cart' ? (
+                                    <>
+                                        {item.icon}
+                                        {item.text}
+                                        {cartItems.length > 0 && <div className='w-6 h-6 rounded-full flex justify-center items-center bg-white'>
+                                            <p className='text-[#7b8a8b] font-semibold'>{(cartItems.reduce((acc, curr) => acc + curr.quantity, 0))}</p>
+                                        </div>}
+                                    </>
+                                ) : (
+                                <>
+                                    {item.icon}
+                                    {item.text}
+                                </>
+                                )
+                            }
                         </li>
                     </Link>
                 ))}
