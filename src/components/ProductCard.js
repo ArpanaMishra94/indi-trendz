@@ -1,13 +1,52 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../utils/cartSlice';
+import { toast } from 'react-toastify';
 
 const ProductCard = ({ product }) => {
     const {title, description, image, price, rating, category} = product;
     const dispatch = useDispatch();
 
+    const CloseButton = ({ closeToast }) => (
+        <button onClick={closeToast} className="text-[#7b8a8b] hover:text-gray-600 transition-colors duration-200">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      );
+
     const handleAddToCart = () => {
         dispatch(addToCart(product));
+        toast(
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="h-6 w-6 text-[#7b8a8b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-gray-900">
+                  Added to cart
+                </p>
+                <p className="mt-1 text-sm text-gray-500">
+                  {product.title}
+                </p>
+              </div>
+            </div>,
+            {
+              position:"top-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              className: 'bg-white shadow-md rounded-md',
+                progressClassName: 'bg-[#7b8a8b]',
+                bodyClassName: 'text-gray-800',
+                closeButton: CloseButton,
+            }
+        );
     }
 
     return (
